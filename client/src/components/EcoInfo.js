@@ -10,7 +10,7 @@ class EcoInfo extends Component {
     componentDidMount() {
         axios.get('/api/show')
             .then(res => {
-               console.log(res.data.data[0].product_key)
+            //    console.log(res.data.data[0].product_key)
                 this.setState({
                 test: res.data.data[0].product_key
                 

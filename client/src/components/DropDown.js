@@ -3,10 +3,12 @@ import Select from 'react-select';
 import axios from 'axios'
 
 const options = [
-  { value: 'Bread', label: 'Bread' },
-  { value: 'Milk', label: 'Milk' },
-  { value: 'Plastic Bag', label: 'Plastic Bag' },
+  { value: '', label: '' },
+  { value: '', label: '' },
+  { value: '', label: '' },
 ];
+
+console.log(options)
 
 class DropDown extends Component {
   state = {
@@ -18,7 +20,9 @@ class DropDown extends Component {
     axios.get('/api/show')
         .then(res => {
             for (var i =0; i < res.data.data.length; i++) {
-                console.log(res.data.data[i].product_key)
+                options[0]["label"] = (res.data.data[i].product_key)
+                options[1]["label"] = (res.data.data[i].product_key)
+                options[2]["label"] = (res.data.data[i].product_key)
             }
         //    console.log(res.data.data[0].product_key)
         //     this.setState({
