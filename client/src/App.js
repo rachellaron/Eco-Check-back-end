@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import EcoInfo from './components/EcoInfo';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
@@ -14,7 +14,7 @@ function App() {
           <NavBar />
           <Header/>
           <SearchBar />
-          <EcoInfo />
+          {/* <EcoInfo /> */}
           
         </Router>
       </div>
