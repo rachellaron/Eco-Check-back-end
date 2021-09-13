@@ -18,11 +18,21 @@ CREATE TABLE product_name(
   common_form TEXT
 );
 
-INSERT INTO recycle_key (name_key, image, info, common_form) VALUES ('1 PET', 'IMAGE URL TEST', 'INFO TEST', 'COMMON_FORM TEST');
 
-INSERT INTO product_name (product_key, image, info, common_form) VALUES ('BREAD', 'IMAGE URL TEST', 'INFO TEST', 'COMMON_FORM TEST');
+INSERT INTO product_name (product_key, image, info, common_form) VALUES ('Bread', '', 'Compost', 'Bread, Vegetables, Fruit');
+INSERT INTO product_name (product_key, image, info, common_form) VALUES ('Milk', '', 'Recyclable', 'Milk and juice bottles, detergent, shampoo and conditioner bottles, water pipes and grocery bags.');
+INSERT INTO product_name (product_key, image, info, common_form) VALUES ('Water Bottle', '', 'Recyclable', 'Water, soft drink and  sport drink bottles, condiment bottles, peanut butter, vegemite and jam jars.');
 
--- INSERT INTO parks (name, address, lat, lng) VALUES ('Jacobs Reserve', 'Brunswick West', -37.756972741, 144.94606131);
+SELECT * FROM product_name;
 
--- INSERT INTO parks (name, address, lat, lng) VALUES ('Dunstan Reserve', '24 Peacock St, Brunswick West', -37.75490494072, 144.9402438);
 
+INSERT INTO recycle_key (name_key, image, info, common_form) VALUES ('Food', '', 'Compost', 'Bread, Vegetables, Fruit');
+INSERT INTO recycle_key (name_key, image, info, common_form) VALUES ('2 HDPE', '', 'Recyclable', 'Milk and juice bottles, detergent, shampoo and conditioner bottles, water pipes and grocery bags.');
+INSERT INTO recycle_key (name_key, image, info, common_form) VALUES ('1 PET', '', 'Recyclable', 'Water, soft drink and  sport drink bottles, condiment bottles, peanut butter, vegemite and jam jars.');
+
+SELECT * FROM recycle_key;
+
+SELECT *     
+FROM product_name  
+JOIN recycle_key  
+ON product_name.common_form = recycle_key.common_form; 

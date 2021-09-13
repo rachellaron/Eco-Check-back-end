@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Select from 'react-select';
 import axios from 'axios'
+import './SearchBar.css'
 
 const productoptions = [
     { value: '', label: '' },
@@ -15,10 +16,9 @@ const keyoptions = [
 ];
 
 
-class DropDown extends Component {
+class SearchBar extends Component {
     state = {
         selectedOption: null,
-        test: ''
     };
 
     componentDidMount() {
@@ -30,50 +30,50 @@ class DropDown extends Component {
                 }
 
                 for (var j = 0; j < res.data.data.length; j++) {
-                    //console.log(res.data.data[i].product_key)
                     keyoptions[j]["label"] = (res.data.data[j].name_key)
-                    keyoptions[j ]["value"] = (res.data.data[j].name_key)
+                    keyoptions[j]["value"] = (res.data.data[j].name_key)
                 }
             })
     }
 
     handleChange = (selectedOption) => {
         this.setState({ selectedOption }, () => {
-            console.log(this.state.selectedOption.value)
-            return (this.state.selectedOption.value)
+            console.log(this.state.selectedOption)
+            return (this.state.selectedOption)
         }
         );
-
     };
 
     DisplayInfo = () => {
         console.log(this.state.selectedOption.value)
-        return(this.state.selectedOption.value)
+        this.setState({checked: this.state.selectedOption.value});
     }
 
     render() {
         const { selectedOption } = this.state;
-        //console.log(selectedOption)
-        //console.log(this.handleChange)
 
         return (
             <div>
 
-                <Select 
+                <Select className="search-bar"
                     //value={selectedOption}
                     onChange={this.handleChange}
                     options={productoptions}
                 />
 
-                <Select
+                <Select className="search-bar2"
                     //value={selectedOption}
                     onChange={this.handleChange}
                     options={keyoptions}
                 />
+                
+                <input type="checkbox" checked={this.state.checked} onClick={this.DisplayInfo}></input>Show 
 
-                r
-                </div>
+                {/* <button onClick={this.DisplayInfo} className="search-btn">Submit</button>
+                <h1>{this.setState}</h1> */}
+
+            </div >
         );
     }
 }
-export default DropDown
+export default SearchBar

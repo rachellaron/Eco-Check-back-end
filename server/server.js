@@ -20,10 +20,31 @@ app.get('/', (req, res) => {
 
 app.get('/api/show', (req, res) => {
 
- db.query("SELECT * FROM product_name;")
-  .then(result => {
-    res.json({data: result.rows})
-  })
+  db.query(`SELECT *     
+          FROM product_name  
+          JOIN recycle_key  
+          ON product_name.common_form = recycle_key.common_form`)
+    .then(result => {
+      res.json({ data: result.rows })
+    })
+
+
+  // db.query("SELECT * FROM recycle_key;")
+  //   .then(keyresult => {
+  //     res.json({ data: keyresult.rows })
+  //   })
+
+
+
+})
+
+module.exports = db
+
+
+
+app.get('/api/show', (req, res) => {
+
+
 
 
 
@@ -32,4 +53,4 @@ app.get('/api/show', (req, res) => {
   //db.query()
 })
 
-module.exports = db
+

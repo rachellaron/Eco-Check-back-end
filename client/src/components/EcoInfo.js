@@ -10,12 +10,10 @@ class EcoInfo extends Component {
     componentDidMount() {
         axios.get('/api/show')
             .then(res => {
-            //    console.log(res.data.data[0].product_key)
-                this.setState({
-                test: res.data.data[0].product_key
-                
+                for (var i = 0; i < res.data.data.length; i++) {
+                    console.log(res.data.data[i])   
+                }
             })
-        })
     }
     render() {
         return (
@@ -28,7 +26,7 @@ class EcoInfo extends Component {
     }
 }
 
-export default EcoInfo
+export default EcoInfo;
 
 
 
