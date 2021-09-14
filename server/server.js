@@ -2,6 +2,8 @@ const express = require('express')
 let app = express()
 const PORT = 3001
 const pg = require('pg')
+app.use(express.static('images'));
+app.use(express.static('client/build'));
 
 app.listen(PORT, () => console.log(`Server is listening on port: ${PORT}`))
 
@@ -20,10 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/show', (req, res) => {
 
-  db.query(`SELECT *     
-          FROM product_name  
-          JOIN recycle_key  
-          ON product_name.common_form = recycle_key.common_form`)
+  db.query(`SELECT * FROM products;`)
     .then(result => {
       res.json({ data: result.rows })
     })

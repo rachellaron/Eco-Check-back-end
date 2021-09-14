@@ -42,12 +42,41 @@
   }
 
   .info-container {
-    margin-top: 100px;
-    height: 500px;
-    width: 73%;
-    border: chocolate 2px solid;
+    background-color: white;
+    margin-top: 80px;;
+    position:relative;
+    height: 600px;
     margin-bottom: 100px;
+    text-align: center;
+    width: 76%;
+    padding: 30px;
+  }
+
+  .info-container h1 {
+      margin-top: 50px;
+  }
+
+  .info-container .fa-recycle {
+    color: #4C9346;
+    margin-top: 20px;
+  }
+
+  .info-container .allbin-img {
+      height: 400px;
+  }
+
+  .product-img {
+      height: 500px;
+      position:absolute;
+      margin-left: 400px;
+      margin-top: -150px;
   }
 
 
+  .display-info {
+    position:absolute;
+    text-align: left;
+    margin-top: -500px;
+    margin-left: 100px;
 
+  }

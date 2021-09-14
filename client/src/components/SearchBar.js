@@ -3,6 +3,7 @@ import Select from 'react-select';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './SearchBar.css'
+import binimage from './images/all-bins-imgs.png'
 
 const productoptions = [
     { value: '', label: '' },
@@ -27,14 +28,18 @@ class SearchBar extends Component {
         axios.get('/api/show')
             .then(res => {
                 for (var i = 0; i < res.data.data.length; i++) {
-                    productoptions[i]["label"] = (res.data.data[i].product_key)
-                    productoptions[i]["value"] = (res.data.data[i].product_key)
+                    // This Works Fine calling it
+                    console.log(res.data.data[i])
+
+                    // I am getting the undefined issue when I call this when i didn't before I added new data into the database
+                    productoptions[i]["label"] = (res.data.data[i].product_name)
+                    productoptions[i]["value"] = (res.data.data[i].product_name)
                     allInfo.push(res.data.data[i])
                 }
 
                 for (var j = 0; j < res.data.data.length; j++) {
-                    keyoptions[j]["label"] = (res.data.data[j].name_key)
-                    keyoptions[j]["value"] = (res.data.data[j].name_key)
+                    keyoptions[j]["label"] = (res.data.data[j].recycle_number)
+                    keyoptions[j]["value"] = (res.data.data[j].recycle_number)
                 }
             })
         //console.log(allInfo)
@@ -44,14 +49,23 @@ class SearchBar extends Component {
 
     handleClick = (event) => {
         //console.log(event.value)
-       this.setState({ selectedOption: event.value })
+        this.setState({ selectedOption: event.value })
     };
 
     ProductKeyDisplayInfo = () => {
         for (var i = 0; i < allInfo.length; i++) {
             //.log(allInfo[i].product_key)
-            if (this.state.selectedOption == allInfo[i].product_key) {
-                return `Your Product is: ${allInfo[i].info}`
+            if (this.state.selectedOption == allInfo[i].product_name) {
+                return `Your Product goes in the ${allInfo[i].info} Bin`
+            }
+        }
+    }
+
+    ProductKeyImage = () => {
+        for (var i = 0; i < allInfo.length; i++) {
+            //.log(allInfo[i].product_key)
+            if (this.state.selectedOption == allInfo[i].product_name) {
+                return allInfo[i].image
             }
         }
     }
@@ -59,7 +73,7 @@ class SearchBar extends Component {
     ProductKeyCommonForm = () => {
         for (var i = 0; i < allInfo.length; i++) {
             //.log(allInfo[i].product_key)
-            if (this.state.selectedOption == allInfo[i].product_key) {
+            if (this.state.selectedOption == allInfo[i].product_name) {
                 return `Common Forms: ${allInfo[i].common_form}`
             }
         }
@@ -68,8 +82,8 @@ class SearchBar extends Component {
     RecycleKeyDisplayInfo = () => {
         for (var i = 0; i < allInfo.length; i++) {
             // console.log(allInfo[i].product_key)
-            if (this.state.selectedOption == allInfo[i].name_key) {
-                return `Your Product is: ${allInfo[i].info}`
+            if (this.state.selectedOption == allInfo[i].recycle_number) {
+                return `Your Product goes in the ${allInfo[i].info} Bin`
             }
         }
     }
@@ -77,7 +91,7 @@ class SearchBar extends Component {
     RecycleKeyCommonForm = () => {
         for (var i = 0; i < allInfo.length; i++) {
             //.log(allInfo[i].product_key)
-            if (this.state.selectedOption == allInfo[i].name_key) {
+            if (this.state.selectedOption == allInfo[i].recycle_number) {
                 return `Common Forms: ${allInfo[i].common_form}`
             }
         }
@@ -89,6 +103,7 @@ class SearchBar extends Component {
         const productCommonForms = this.ProductKeyCommonForm()
         const isReycleKeyRecycable = this.RecycleKeyDisplayInfo()
         const recycleKeyCommonForms = this.RecycleKeyCommonForm()
+        const ProductKeyImage = this.ProductKeyImage()
 
         return (
             <div className="search">
@@ -107,21 +122,24 @@ class SearchBar extends Component {
                 />
 
                 <div className="info-container">
-                <h1 style={{visibility: this.state.selectedOption ? 'hidden' : 'visible' }}>Waiting for your chosen product...</h1>
-                <h1 style={{visibility: this.state.selectedOption ? 'hidden' : 'visible' }}><i className="fas fa-recycle fa-spin fa-7x"></i></h1>
-                
+                    <h1 style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }}>Waiting for your chosen product...</h1>
+                    <p style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }}><i className="fas fa-recycle fa-spin "></i></p>
+                    <img className="allbin-img" src={binimage} style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }} alt="this is car image" />
 
-                <h2 style={{visibility: this.state.selectedOption ? 'visible' : 'hidden' }}>Your Chosen Product is: {this.state.selectedOption}</h2>
-                
+                    <div className="display-info">
+                        <h2 style={{ visibility: this.state.selectedOption ? 'visible' : 'hidden' }}>Your Chosen Product is: {this.state.selectedOption}</h2>
 
-                    <h2>{isProductRecycable}</h2>
-                    <p>{productCommonForms}</p>
-                    <h2>{isReycleKeyRecycable}</h2>
-                    <p>{recycleKeyCommonForms}</p>
+                        <img className="product-img" src={ProductKeyImage}></img>
+
+                        <h2>{isProductRecycable}</h2>
+                        <p>{productCommonForms}</p>
+                        <h2>{isReycleKeyRecycable}</h2>
+                        <p>{recycleKeyCommonForms}</p>
+                        
 
 
 
-
+                    </div>
                 </div>
 
             </div >
