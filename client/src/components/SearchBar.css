@@ -48,7 +48,7 @@
     height: 600px;
     margin-bottom: 100px;
     text-align: center;
-    width: 76%;
+    width: 77%;
     padding: 30px;
   }
 
@@ -78,5 +78,33 @@
     text-align: left;
     margin-top: -500px;
     margin-left: 100px;
+
+  }
+
+.label-tips {
+    width: 81%;
+    border: green 5px solid;
+    padding: 15px;
+}
+
+  
+.label-tips-open {
+    color:#232323;
+    background-color: transparent;
+    font-family: 'Raleway', sans-serif;
+    font-weight:600;
+    border:none;
+    float: right;
+  }
+  
+  .label-tips-open:hover {
+    cursor: pointer;
+    color: #4C9346;
+    transition: 0.2s ease-in;
+  }
+
+  .fa-chevron-down {
+      color:#4C9346;
+      float: right;
 
   }
