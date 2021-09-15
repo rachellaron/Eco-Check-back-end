@@ -52,61 +52,7 @@ class SearchBar extends Component {
                         keyoptions.push({ value: res.data.data[i].recycle_number, label: res.data.data[i].recycle_number })
                     }
                 }
-
-
-                // for (var j = 0; j < res.data.data.length; j++) {
-                //     let isAlreadyAnOption = false;
-                //     for (var a = 0; a < keyoptions.length; a++) {
-                //         if (keyoptions[a].value == res.data.data[j].recycle_number) {
-                //             isAlreadyAnOption = true;
-                //         }
-                //     }
-                //     if (!isAlreadyAnOption) {
-                //         keyoptions.push({ value: res.data.data[j].recycle_number, label: res.data.data[j].recycle_number })
-                //     }
-
-                        // if (!keyoptions.includes({ value: res.data.data[j].recycle_number, label: res.data.data[j].recycle_number })) {
-                        //     keyoptions.push({ value: res.data.data[j].recycle_number, label: res.data.data[j].recycle_number })
-                        // }
-                
-
-                // for (var j = 0; j < res.data.data.length; j++) {
-                //     if (!unique.includes({ value: res.data.data[j].recycle_number, label: res.data.data[j].recycle_number })) {
-                //         unique.push({ value: res.data.data[j].recycle_number, label: res.data.data[j].recycle_number })
-                //     }
-
-
-                //     //console.log(res.data.data[j].recycle_number)
-                // }
-
-
-
-                // for (var j = 0; j < res.data.data.length; j++) {
-                //     keyoptions.filter((key, index) => {
-                //         if (keyoptions.indexOf(key) == index)
-                //         unique.push(keyoptions)
-                //         // return keyoptions.indexOf(key) == index;
-                //       }); console.log(unique)
-
-                // if keyoptions.indexOf(key) == index not in unique:
-                // unique.push(keyoptions.indexOf(key) == index)
-
-
-
-
-                // console.log(res.data.data[j].recycle_number)
-                // if (_.findWhere(keyoptions, res.data.data[j].recycle_number) == null) {
-                //     console.log(_.findWhere(keyoptions, res.data.data[j].recycle_number) == null)
-                //     keyoptions.push({ value: res.data.data[j].recycle_number, label: res.data.data[j].recycle_number })
-
-                //         res.data.data[j].recycle_number);
-
-                // keyoptions[j]["label"] = (res.data.data[j].recycle_number)
-                // keyoptions[j]["value"] = (res.data.data[j].recycle_number)
-            }
-
-                //console.log(allInfo)
-            )
+            })
     }
 
 
