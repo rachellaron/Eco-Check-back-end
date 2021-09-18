@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/show', (req, res) => {
 
-  db.query(`SELECT * FROM products;`)
+  db.query(`SELECT * FROM products ORDER by product_name;`)
     .then(result => {
       res.json({ data: result.rows })
     })

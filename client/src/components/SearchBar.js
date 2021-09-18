@@ -1,5 +1,4 @@
 import { Component } from 'react';
-
 import Select from 'react-select';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -8,31 +7,18 @@ import binimage from './images/all-bins-imgs.png'
 import React, { useState } from 'react'
 import _ from 'underscore'
 
-// const productoptions = [
-//     { value: '', label: '' },
-//     { value: '', label: '' },
-//     { value: '', label: '' },
-// ];
 
-// const keyoptions = [
-//     { value: '', label: '' },
-//     { value: '', label: '' },
-//     { value: '', label: '' },
-// ];
 
 const productoptions = []
 const keyoptions = []
 const allInfo = []
 const unique = []
 console.log(keyoptions)
-// console.log(unique)
 
 class SearchBar extends Component {
     state = {
         selectedOption: null,
     };
-
-
 
     componentDidMount() {
         axios.get('/api/show')
@@ -55,10 +41,6 @@ class SearchBar extends Component {
             })
     }
 
-
-
-
-
     handleClick = (event) => {
         //console.log(event.value)
         this.setState({ selectedOption: event.value })
@@ -68,7 +50,16 @@ class SearchBar extends Component {
         for (var i = 0; i < allInfo.length; i++) {
             //.log(allInfo[i].product_key)
             if (this.state.selectedOption == allInfo[i].product_name) {
-                return `Your Product goes in the ${allInfo[i].info} Bin`
+                return allInfo[i].info
+            }
+        }
+    }
+
+    ProductKeyBin = () => {
+        for (var i = 0; i < allInfo.length; i++) {
+            //.log(allInfo[i].product_key)
+            if (this.state.selectedOption == allInfo[i].product_name) {
+                return `Your Product goes in the ${allInfo[i].bin_info}`
             }
         }
     }
@@ -95,7 +86,16 @@ class SearchBar extends Component {
         for (var i = 0; i < allInfo.length; i++) {
             // console.log(allInfo[i].product_key)
             if (this.state.selectedOption == allInfo[i].recycle_number) {
-                return `Your Product goes in the ${allInfo[i].info} Bin`
+                return allInfo[i].info
+            }
+        }
+    }
+
+    RecycleKeyBin = () => {
+        for (var i = 0; i < allInfo.length; i++) {
+            //.log(allInfo[i].product_key)
+            if (this.state.selectedOption == allInfo[i].product_name) {
+                return `Your Product goes in the ${allInfo[i].bin_info}`
             }
         }
     }
@@ -126,41 +126,59 @@ class SearchBar extends Component {
         const recycleKeyCommonForms = this.RecycleKeyCommonForm()
         const ProductKeyImage = this.ProductKeyImage()
         const RecycleKeyImage = this.RecycleKeyImage()
+        const ProductKeyBin = this.ProductKeyBin()
+        const RecycleKeyBin = this.RecycleKeyBin()
 
 
         return (
-            <div className="search">
-                <h1> Let’s Check Your Product </h1>
-                <p>Search here by the <Link to='/'>Recycle Number</Link> on your product or choose from one of the <Link to='/'>Product Dropdowns</Link> listed.</p>
-                <Select className="search-bar"
-                    //value={this.state.selectedOption}
-                    onChange={this.handleClick}
-                    options={productoptions}
-                />
+            <div>
+                <div className="search">
+                    <h1> Let’s Check Your Product </h1>
+                    <p>Search here by the <Link to='/'>Recycle Number</Link> on your product or choose from one of the <Link to='/'>Product Dropdowns</Link> listed.</p>
+                    <Select className="search-bar"
+                        //value={this.state.selectedOption}
+                        onChange={this.handleClick}
+                        options={productoptions}
+                    />
 
-                <Select className="search-bar2"
-                    //value={selectedOption}
-                    onChange={this.handleClick}
-                    options={keyoptions}
-                />
+                    <Select className="search-bar2"
+                        //value={selectedOption}
+                        onChange={this.handleClick}
+                        options={keyoptions}
+                    />
 
-                <div className="info-container">
-                    <h1 style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }}>Waiting for your chosen product...</h1>
-                    <p style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }}><i className="fas fa-recycle fa-spin "></i></p>
-                    <img className="allbin-img" src={binimage} style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }} alt="this is car image" />
+                </div>
 
-                    <div className="display-info">
+                <div className="main-info-container">
+
+                    <div className="waiting">
+                        <h1 style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }}>Waiting for your chosen product...</h1>
+                        <p style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }}><i className="fas fa-recycle fa-spin"></i></p>
+                        <img className="all-bins-img" src={binimage} style={{ visibility: this.state.selectedOption ? 'hidden' : 'visible' }} alt="this is car image" />
+                    </div>
+
+
+                    <div style={{ visibility: this.state.selectedOption ? 'visible' : 'hidden' }} className="display-info">
+
                         <h2 style={{ visibility: this.state.selectedOption ? 'visible' : 'hidden' }}>Your Chosen Product is: {this.state.selectedOption}</h2>
+
+                    </div>
+
+                    <div className="information-container">
+
+                        <h3>{ProductKeyBin}</h3>
+                        <p>{isProductRecycable}</p>
+                        <p>{productCommonForms}</p>
+
+
+                        <p>{isReycleKeyRecycable}</p>
+                        <p>{recycleKeyCommonForms}</p>
 
                         <img className="product-img" src={ProductKeyImage}></img>
                         <img className="product-img" src={RecycleKeyImage}></img>
 
-                        <h2>{isProductRecycable}</h2>
-                        <p>{productCommonForms}</p>
-                        <h2>{isReycleKeyRecycable}</h2>
-                        <p>{recycleKeyCommonForms}</p>
-
                     </div>
+
                 </div>
 
                 <div className="label-tips">
@@ -172,7 +190,7 @@ class SearchBar extends Component {
 
                 </div>
 
-            </div >
+            </div>
         );
     }
 }
