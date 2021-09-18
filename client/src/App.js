@@ -5,6 +5,7 @@ import EcoInfo from './components/EcoInfo';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
 import SearchBar from './components/SearchBar';
+import TipsToggle from './components/LableTips';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <NavBar />
           <Header/>
           <SearchBar />
+          <TipsToggle/>
           {/* <EcoInfo /> */}
           
         </Router>

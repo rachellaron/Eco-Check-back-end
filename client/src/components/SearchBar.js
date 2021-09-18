@@ -15,6 +15,8 @@ const allInfo = []
 const unique = []
 console.log(keyoptions)
 
+// const [click, setClick] = useState(false)
+
 class SearchBar extends Component {
     state = {
         selectedOption: null,
@@ -41,10 +43,16 @@ class SearchBar extends Component {
             })
     }
 
-    handleClick = (event) => {
+    handleChange = (event) => {
         //console.log(event.value)
         this.setState({ selectedOption: event.value })
     };
+
+    handleClick = () => {
+        return('Click happened');
+      }
+
+
 
     ProductKeyDisplayInfo = () => {
         for (var i = 0; i < allInfo.length; i++) {
@@ -128,6 +136,7 @@ class SearchBar extends Component {
         const RecycleKeyImage = this.RecycleKeyImage()
         const ProductKeyBin = this.ProductKeyBin()
         const RecycleKeyBin = this.RecycleKeyBin()
+        const handleClick = this.handleClick()
 
 
         return (
@@ -137,13 +146,13 @@ class SearchBar extends Component {
                     <p>Search here by the <Link to='/'>Recycle Number</Link> on your product or choose from one of the <Link to='/'>Product Dropdowns</Link> listed.</p>
                     <Select className="search-bar"
                         //value={this.state.selectedOption}
-                        onChange={this.handleClick}
+                        onChange={this.handleChange}
                         options={productoptions}
                     />
 
                     <Select className="search-bar2"
                         //value={selectedOption}
-                        onChange={this.handleClick}
+                        onChange={this.handleChange}
                         options={keyoptions}
                     />
 
@@ -181,14 +190,6 @@ class SearchBar extends Component {
 
                 </div>
 
-                <div className="label-tips">
-                    <label>Label Tips</label><button className="label-tips-open"><i className="fas fa-chevron-down fa-2x"></i></button>
-
-                    {/* <div className="menu-icon" onClick={handleClick}>
-                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-                    </div> */}
-
-                </div>
 
             </div>
         );
