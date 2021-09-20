@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ba475c78.chunk.css",
+    "main.js": "/static/js/main.c0ee34e8.chunk.js",
+    "main.js.map": "/static/js/main.c0ee34e8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c568c12f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c568c12f.js.map",
+    "static/js/2.1b370f17.chunk.js": "/static/js/2.1b370f17.chunk.js",
+    "static/js/2.1b370f17.chunk.js.map": "/static/js/2.1b370f17.chunk.js.map",
+    "static/js/3.0abebad3.chunk.js": "/static/js/3.0abebad3.chunk.js",
+    "static/js/3.0abebad3.chunk.js.map": "/static/js/3.0abebad3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ba475c78.chunk.css.map": "/static/css/main.ba475c78.chunk.css.map",
+    "static/js/2.1b370f17.chunk.js.LICENSE.txt": "/static/js/2.1b370f17.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/Background_img.235f09ad.png",
+    "static/media/LabelTips.1fc5062c.png": "/static/media/LabelTips.1fc5062c.png",
+    "static/media/all-bins-imgs.11659ec0.png": "/static/media/all-bins-imgs.11659ec0.png",
+    "static/media/lable-tips-trans.83909a9f.png": "/static/media/lable-tips-trans.83909a9f.png",
+    "static/media/Header.css": "/static/media/sharewastelogo.e9ceb086.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c568c12f.js",
+    "static/js/2.1b370f17.chunk.js",
+    "static/css/main.ba475c78.chunk.css",
+    "static/js/main.c0ee34e8.chunk.js"
+  ]
+}
