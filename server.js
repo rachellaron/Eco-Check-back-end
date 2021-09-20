@@ -29,11 +29,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-// Routes
-app.get('/', (req, res) => {
-  res.send("hello world")
-})
-
 app.get('/api/show', (req, res) => {
 
   pool.query(`SELECT * FROM products ORDER by product_name;`)
