@@ -68,3 +68,4 @@ ADD bin_info TEXT;
 Common Food Products -> 
 
 INSERT INTO products (product_name, recycle_number, image, info, common_form, bin_info) VALUES ('Bread', 'FO (Food Organics)', '/compost-bin.png', 'You can dispose of these items in your compost bin or if you do not own a compost bin, please follow the link below.', 'Compost', 'Compost Bin');
+
